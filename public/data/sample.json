@@ -1,0 +1,870 @@
+{
+ "version": 1,
+ "source": "倪匡《奔龍》(sample)",
+ "generatedAt": "2026-11-27",
+ "items": [
+  {
+   "id": "c-000000",
+   "kind": "char",
+   "text": "天",
+   "textTrad": "天",
+   "syllables": [
+    {
+     "hanzi": "天",
+     "hanziTrad": "天",
+     "pinyin": "tian1",
+     "jyutping": "tin1",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000001",
+   "kind": "char",
+   "text": "色",
+   "textTrad": "色",
+   "syllables": [
+    {
+     "hanzi": "色",
+     "hanziTrad": "色",
+     "pinyin": "se4",
+     "jyutping": "sik1",
+     "polyphonic": true
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000002",
+   "kind": "char",
+   "text": "云",
+   "textTrad": "雲",
+   "syllables": [
+    {
+     "hanzi": "云",
+     "hanziTrad": "雲",
+     "pinyin": "yun2",
+     "jyutping": "wan4",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000003",
+   "kind": "char",
+   "text": "雨",
+   "textTrad": "雨",
+   "syllables": [
+    {
+     "hanzi": "雨",
+     "hanziTrad": "雨",
+     "pinyin": "yu3",
+     "jyutping": "jyu5",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000004",
+   "kind": "char",
+   "text": "人",
+   "textTrad": "人",
+   "syllables": [
+    {
+     "hanzi": "人",
+     "hanziTrad": "人",
+     "pinyin": "ren2",
+     "jyutping": "jan4",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000005",
+   "kind": "char",
+   "text": "山",
+   "textTrad": "山",
+   "syllables": [
+    {
+     "hanzi": "山",
+     "hanziTrad": "山",
+     "pinyin": "shan1",
+     "jyutping": "saan1",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000006",
+   "kind": "char",
+   "text": "家",
+   "textTrad": "家",
+   "syllables": [
+    {
+     "hanzi": "家",
+     "hanziTrad": "家",
+     "pinyin": "jia1",
+     "jyutping": "gaa1",
+     "polyphonic": true
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000007",
+   "kind": "char",
+   "text": "手",
+   "textTrad": "手",
+   "syllables": [
+    {
+     "hanzi": "手",
+     "hanziTrad": "手",
+     "pinyin": "shou3",
+     "jyutping": "sau2",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000008",
+   "kind": "char",
+   "text": "酒",
+   "textTrad": "酒",
+   "syllables": [
+    {
+     "hanzi": "酒",
+     "hanziTrad": "酒",
+     "pinyin": "jiu3",
+     "jyutping": "zau2",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000009",
+   "kind": "char",
+   "text": "笑",
+   "textTrad": "笑",
+   "syllables": [
+    {
+     "hanzi": "笑",
+     "hanziTrad": "笑",
+     "pinyin": "xiao4",
+     "jyutping": "siu3",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000010",
+   "kind": "char",
+   "text": "心",
+   "textTrad": "心",
+   "syllables": [
+    {
+     "hanzi": "心",
+     "hanziTrad": "心",
+     "pinyin": "xin1",
+     "jyutping": "sam1",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000011",
+   "kind": "char",
+   "text": "大",
+   "textTrad": "大",
+   "syllables": [
+    {
+     "hanzi": "大",
+     "hanziTrad": "大",
+     "pinyin": "da4",
+     "jyutping": "daai6",
+     "polyphonic": true
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000012",
+   "kind": "char",
+   "text": "黑",
+   "textTrad": "黑",
+   "syllables": [
+    {
+     "hanzi": "黑",
+     "hanziTrad": "黑",
+     "pinyin": "hei1",
+     "jyutping": "hak1",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000013",
+   "kind": "char",
+   "text": "门",
+   "textTrad": "門",
+   "syllables": [
+    {
+     "hanzi": "门",
+     "hanziTrad": "門",
+     "pinyin": "men2",
+     "jyutping": "mun4",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000014",
+   "kind": "char",
+   "text": "马",
+   "textTrad": "馬",
+   "syllables": [
+    {
+     "hanzi": "马",
+     "hanziTrad": "馬",
+     "pinyin": "ma3",
+     "jyutping": "maa5",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "c-000015",
+   "kind": "char",
+   "text": "绿",
+   "textTrad": "綠",
+   "syllables": [
+    {
+     "hanzi": "绿",
+     "hanziTrad": "綠",
+     "pinyin": "lv4",
+     "jyutping": "luk6",
+     "polyphonic": false
+    }
+   ],
+   "level": 1,
+   "freq": 10,
+   "chapter": 1,
+   "context": "天色阴霾得可怕，乌黑的云层"
+  },
+  {
+   "id": "w-000016",
+   "kind": "word",
+   "text": "天色",
+   "textTrad": "天色",
+   "syllables": [
+    {
+     "hanzi": "天",
+     "hanziTrad": "天",
+     "pinyin": "tian1",
+     "jyutping": "tin1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "色",
+     "hanziTrad": "色",
+     "pinyin": "se4",
+     "jyutping": "sik1",
+     "polyphonic": true
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000017",
+   "kind": "word",
+   "text": "乌黑",
+   "textTrad": "烏黑",
+   "syllables": [
+    {
+     "hanzi": "乌",
+     "hanziTrad": "烏",
+     "pinyin": "wu1",
+     "jyutping": "wu1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "黑",
+     "hanziTrad": "黑",
+     "pinyin": "hei1",
+     "jyutping": "hak1",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000018",
+   "kind": "word",
+   "text": "云层",
+   "textTrad": "雲層",
+   "syllables": [
+    {
+     "hanzi": "云",
+     "hanziTrad": "雲",
+     "pinyin": "yun2",
+     "jyutping": "wan4",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "层",
+     "hanziTrad": "層",
+     "pinyin": "ceng2",
+     "jyutping": "cang4",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000019",
+   "kind": "word",
+   "text": "姑娘",
+   "textTrad": "姑娘",
+   "syllables": [
+    {
+     "hanzi": "姑",
+     "hanziTrad": "姑",
+     "pinyin": "gu1",
+     "jyutping": "gu1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "娘",
+     "hanziTrad": "娘",
+     "pinyin": "niang5",
+     "jyutping": "noeng4",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000020",
+   "kind": "word",
+   "text": "英雄",
+   "textTrad": "英雄",
+   "syllables": [
+    {
+     "hanzi": "英",
+     "hanziTrad": "英",
+     "pinyin": "ying1",
+     "jyutping": "jing1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "雄",
+     "hanziTrad": "雄",
+     "pinyin": "xiong2",
+     "jyutping": "hung4",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000021",
+   "kind": "word",
+   "text": "江湖",
+   "textTrad": "江湖",
+   "syllables": [
+    {
+     "hanzi": "江",
+     "hanziTrad": "江",
+     "pinyin": "jiang1",
+     "jyutping": "gong1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "湖",
+     "hanziTrad": "湖",
+     "pinyin": "hu2",
+     "jyutping": "wu4",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000022",
+   "kind": "word",
+   "text": "武林",
+   "textTrad": "武林",
+   "syllables": [
+    {
+     "hanzi": "武",
+     "hanziTrad": "武",
+     "pinyin": "wu3",
+     "jyutping": "mou5",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "林",
+     "hanziTrad": "林",
+     "pinyin": "lin2",
+     "jyutping": "lam4",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000023",
+   "kind": "word",
+   "text": "喝酒",
+   "textTrad": "喝酒",
+   "syllables": [
+    {
+     "hanzi": "喝",
+     "hanziTrad": "喝",
+     "pinyin": "he1",
+     "jyutping": "hot3",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "酒",
+     "hanziTrad": "酒",
+     "pinyin": "jiu3",
+     "jyutping": "zau2",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000024",
+   "kind": "word",
+   "text": "衣服",
+   "textTrad": "衣服",
+   "syllables": [
+    {
+     "hanzi": "衣",
+     "hanziTrad": "衣",
+     "pinyin": "yi1",
+     "jyutping": "ji1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "服",
+     "hanziTrad": "服",
+     "pinyin": "fu5",
+     "jyutping": "fuk6",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000025",
+   "kind": "word",
+   "text": "回家",
+   "textTrad": "回家",
+   "syllables": [
+    {
+     "hanzi": "回",
+     "hanziTrad": "回",
+     "pinyin": "hui2",
+     "jyutping": "wui4",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "家",
+     "hanziTrad": "家",
+     "pinyin": "jia1",
+     "jyutping": "gaa1",
+     "polyphonic": true
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000026",
+   "kind": "word",
+   "text": "知道",
+   "textTrad": "知道",
+   "syllables": [
+    {
+     "hanzi": "知",
+     "hanziTrad": "知",
+     "pinyin": "zhi1",
+     "jyutping": "zi1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "道",
+     "hanziTrad": "道",
+     "pinyin": "dao4",
+     "jyutping": "dou3",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000027",
+   "kind": "word",
+   "text": "打猎",
+   "textTrad": "打獵",
+   "syllables": [
+    {
+     "hanzi": "打",
+     "hanziTrad": "打",
+     "pinyin": "da3",
+     "jyutping": "daa2",
+     "polyphonic": true
+    },
+    {
+     "hanzi": "猎",
+     "hanziTrad": "獵",
+     "pinyin": "lie4",
+     "jyutping": "lip6",
+     "polyphonic": false
+    }
+   ],
+   "level": 2,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000028",
+   "kind": "word",
+   "text": "店小二",
+   "textTrad": "店小二",
+   "syllables": [
+    {
+     "hanzi": "店",
+     "hanziTrad": "店",
+     "pinyin": "dian4",
+     "jyutping": "dim3",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "小",
+     "hanziTrad": "小",
+     "pinyin": "xiao3",
+     "jyutping": "siu2",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "二",
+     "hanziTrad": "二",
+     "pinyin": "er4",
+     "jyutping": "ji6",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000029",
+   "kind": "word",
+   "text": "老英雄",
+   "textTrad": "老英雄",
+   "syllables": [
+    {
+     "hanzi": "老",
+     "hanziTrad": "老",
+     "pinyin": "lao3",
+     "jyutping": "lou5",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "英",
+     "hanziTrad": "英",
+     "pinyin": "ying1",
+     "jyutping": "jing1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "雄",
+     "hanziTrad": "雄",
+     "pinyin": "xiong2",
+     "jyutping": "hung4",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000030",
+   "kind": "word",
+   "text": "明知故问",
+   "textTrad": "明知故問",
+   "syllables": [
+    {
+     "hanzi": "明",
+     "hanziTrad": "明",
+     "pinyin": "ming2",
+     "jyutping": "ming4",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "知",
+     "hanziTrad": "知",
+     "pinyin": "zhi1",
+     "jyutping": "zi1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "故",
+     "hanziTrad": "故",
+     "pinyin": "gu4",
+     "jyutping": "gu3",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "问",
+     "hanziTrad": "問",
+     "pinyin": "wen4",
+     "jyutping": "man6",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000031",
+   "kind": "word",
+   "text": "生死之交",
+   "textTrad": "生死之交",
+   "syllables": [
+    {
+     "hanzi": "生",
+     "hanziTrad": "生",
+     "pinyin": "sheng1",
+     "jyutping": "sang1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "死",
+     "hanziTrad": "死",
+     "pinyin": "si3",
+     "jyutping": "sei2",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "之",
+     "hanziTrad": "之",
+     "pinyin": "zhi1",
+     "jyutping": "zi1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "交",
+     "hanziTrad": "交",
+     "pinyin": "jiao1",
+     "jyutping": "gaau1",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000032",
+   "kind": "word",
+   "text": "一言不发",
+   "textTrad": "一言不發",
+   "syllables": [
+    {
+     "hanzi": "一",
+     "hanziTrad": "一",
+     "pinyin": "yi1",
+     "jyutping": "jat1",
+     "polyphonic": true
+    },
+    {
+     "hanzi": "言",
+     "hanziTrad": "言",
+     "pinyin": "yan2",
+     "jyutping": "jin4",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "不",
+     "hanziTrad": "不",
+     "pinyin": "bu4",
+     "jyutping": "bat1",
+     "polyphonic": true
+    },
+    {
+     "hanzi": "发",
+     "hanziTrad": "發",
+     "pinyin": "fa1",
+     "jyutping": "faat3",
+     "polyphonic": true
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000033",
+   "kind": "word",
+   "text": "心神恍惚",
+   "textTrad": "心神恍惚",
+   "syllables": [
+    {
+     "hanzi": "心",
+     "hanziTrad": "心",
+     "pinyin": "xin1",
+     "jyutping": "sam1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "神",
+     "hanziTrad": "神",
+     "pinyin": "shen2",
+     "jyutping": "san4",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "恍",
+     "hanziTrad": "恍",
+     "pinyin": "huang3",
+     "jyutping": "fong2",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "惚",
+     "hanziTrad": "惚",
+     "pinyin": "hu1",
+     "jyutping": "fat1",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  },
+  {
+   "id": "w-000034",
+   "kind": "word",
+   "text": "天地之间",
+   "textTrad": "天地之間",
+   "syllables": [
+    {
+     "hanzi": "天",
+     "hanziTrad": "天",
+     "pinyin": "tian1",
+     "jyutping": "tin1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "地",
+     "hanziTrad": "地",
+     "pinyin": "di4",
+     "jyutping": "dei6",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "之",
+     "hanziTrad": "之",
+     "pinyin": "zhi1",
+     "jyutping": "zi1",
+     "polyphonic": false
+    },
+    {
+     "hanzi": "间",
+     "hanziTrad": "間",
+     "pinyin": "jian1",
+     "jyutping": "gaan1",
+     "polyphonic": false
+    }
+   ],
+   "level": 3,
+   "freq": 10,
+   "chapter": 1
+  }
+ ]
+}

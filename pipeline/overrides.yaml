@@ -1,0 +1,89 @@
+# Manual reading fixes, applied after the automatic rules in annotate.py.
+#
+# words: key = simplified string matched anywhere inside a clause (longest key wins), so the fix
+#   reaches every word / phrase / context containing it. Values are space-separated syllables,
+#   one per char; "_" keeps the computed value. Optional:
+#     trad: same-length traditional string ("_" keeps computed char)
+#     pinyinAlt / jyutpingAlt: space-separated per-char extra accepted readings ("_" = none),
+#       added to exported items whose text contains the key.
+# charAlts: see bottom of file.
+# chars: standalone reading for single-char items (kind 'char') only:
+#     {pinyin, jyutping, pinyinAlt: [...], jyutpingAlt: [...]}
+words:
+  # --- pinyin: pypinyin lacks phrase context ---
+  姑娘: {pinyin: "gu1 niang5"}
+  一重: {pinyin: "_ chong2", jyutping: "_ cung4"}         # 一重雨粉 = one layer
+  重重地: {pinyin: "zhong4 zhong4 de5", jyutping: "cung5 cung5 _"}  # 重重地中了一掌 = heavily
+  率着: {pinyin: "shuai4 _"}                              # 率着帮众 = led
+  点着头: {pinyin: "_ zhe5 _"}
+  落下: {pinyin: "luo4 _"}
+  流血: {pinyin: "_ xue4"}
+  血淋淋: {pinyinAlt: "xue4 _ _"}
+  用处: {pinyin: "_ chu4", jyutping: "_ cyu3"}
+  撞倒: {pinyin: "_ dao3", jyutping: "_ dou2"}
+  东倒西塌: {pinyin: "_ dao3 _ _", jyutping: "_ dou2 _ _"}
+  跌倒: {jyutping: "_ dou2"}
+  应道: {pinyin: "ying4 _", jyutping: "jing3 _"}         # 应道 = replied
+  应手: {jyutping: "jing3 _"}
+  应答: {jyutping: "jing3 _"}
+  车行: {pinyin: "_ xing2", jyutping: "_ hang4"}         # 车行甚远 = the cart travelled
+  同行: {pinyin: "tong2 xing2", jyutping: "tung4 hang4"} # travel together
+  一行: {pinyin: "_ xing2", jyutping: "_ hang4"}         # 一行人 = the party
+  几行: {pinyin: "_ hang2", jyutping: "_ hong4"}         # 几行字 = lines of text
+  八行: {pinyin: "_ hang2", jyutping: "_ hong4"}
+  长不了: {pinyin: "chang2 _ _", jyutping: "coeng4 _ _"}  # 比匕首长不了多少 = not much longer
+  长相: {pinyin: "zhang3 xiang4", jyutping: "zoeng2 soeng3"}
+  这只要: {pinyin: "_ zhi3 _", jyutping: "_ zi2 _", trad: "這只要"}
+  徐虎子: {pinyinAlt: "_ _ zi3"}                           # nickname 虎子: neutral tone common
+  长满: {pinyin: "zhang3 _", jyutping: "zoeng2 _"}
+  所得: {pinyin: "_ de2"}
+  值得: {pinyin: "_ de2"}
+  # 中 = hit (zhong4 zung3) vs inside (zhong1 zung1)
+  刺中: {pinyin: "_ zhong4", jyutping: "_ zung3"}
+  射中: {pinyin: "_ zhong4", jyutping: "_ zung3"}
+  中镖: {pinyin: "zhong4 _", jyutping: "zung3 _"}
+  一中掌: {pinyin: "_ zhong4 _", jyutping: "_ zung3 _"}
+  一击不中: {pinyin: "_ _ _ zhong4", jyutping: "_ _ _ zung3"}
+  林中: {pinyin: "_ zhong1", jyutping: "_ zung1"}
+  途中: {pinyin: "_ zhong1", jyutping: "_ zung1"}
+  弹: {pinyin: "tan2", jyutping: "taan4"}                 # 伸手一弹 = flick (all uses in novel)
+  大喝: {pinyin: "_ he4"}
+  断喝: {pinyin: "_ he4"}
+  厉喝: {pinyin: "_ he4"}
+  劲装: {pinyin: "jing4 _"}
+  劈成: {pinyin: "pi1 _"}
+  劲疾: {pinyin: "jing4 _"}
+  # --- jyutping: ToJyutping picks the wrong reading ---
+  重伤: {jyutping: "zung6 _", jyutpingAlt: "cung5 _"}
+  如释重负: {jyutping: "_ _ zung6 _"}
+  面面相觑: {jyutping: "_ _ soeng1 _"}
+  相对: {jyutping: "soeng1 _"}
+  貌相: {jyutping: "_ soeng3"}
+  数一数二: {jyutping: "sou2 _ sou2 _"}
+  多少年来: {jyutping: "_ siu2 _ _"}
+  好整以暇: {jyutping: "hou3 _ _ _"}
+  好一阵: {jyutping: "hou2 _ _"}
+  责难: {jyutping: "_ naan6"}
+  不禁: {jyutping: "_ gam1"}
+  店小二: {jyutping: "_ _ ji6", jyutpingAlt: "_ _ ji2"}                              # 不禁 bat1 gam1 (cannot help)
+  # --- traditional: s2hk picks the wrong form ---
+  干的: {trad: "幹_"}                                       # 干的是挖掘坟墓的勾当 = do
+  干得没: {trad: "乾__"}                                     # 也干得没有了水 = dry
+  干笑: {trad: "乾_"}
+  发颤: {trad: "發_"}
+  发亮: {trad: "發_"}
+  剧斗: {trad: "_鬥"}
+  长发抖散: {pinyin: "chang2 fa4 dou3 san4", jyutping: "coeng4 faat3 dau2 saan3", trad: "長髮抖散"}
+chars:
+  子: {pinyin: zi3}          # standalone 子 is zi3 (zi5 only as a suffix)
+  娘: {pinyin: niang2}       # standalone 娘 is niang2 (niang5 only in 姑娘)
+  糊: {jyutping: wu4, jyutpingAlt: [wu2]}
+  累: {pinyin: lei4}         # novel mostly has 累赘 (lei2); standalone 累 = tired
+
+# skip: words never exported as word items (source typos etc.)
+skip: [自已]
+
+# charAlts: extra accepted readings for a char wherever it appears (free variants).
+charAlts:
+  这: {jyutping: [ze2, ze5]}
+  跃: {jyutping: [joek6, joek3]}
