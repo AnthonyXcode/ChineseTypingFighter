@@ -10,6 +10,7 @@ export {
   acceptedReadings,
 } from './romanization';
 export { getHint, HINT_PENALTY } from './hints';
+export { explainAnswer } from './explain';
 export {
   loadData,
   buildQuestions,

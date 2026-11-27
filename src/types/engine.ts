@@ -19,6 +19,27 @@ export interface Settings {
   ttsOn: boolean;
   testInstantFeedback: boolean;// default false
   theme: 'auto' | 'light' | 'dark';
+  showReason: boolean;         // show the "why is this the answer" box after answering (default false)
+}
+
+/** Explanation of an answer ("為甚麼？" box). Built by explainAnswer(item, system). */
+export interface SyllableExplanation {
+  hanzi: string;                // simplified
+  hanziTrad: string;
+  roman: string;                // numbered, e.g. "zhong1"
+  display: string;              // pinyin with tone mark ("zhōng"); jyutping numbered
+  initial: string;              // "" for zero initial
+  final: string;
+  tone: string;                 // "1".."6"
+  toneName: string;             // 陰平 / 陽平 / 上聲 / 去聲 / 輕聲 ; 粵: 陰平 陰上 陰去 陽平 陽上 陽去 (陰入 中入 陽入)
+  contour: string;              // e.g. "高平 55"
+  notes: string[];              // spelling rules, polyphone note, ...
+  other: string;                // the other system's reading for comparison ("" if missing)
+}
+export interface Explanation {
+  system: RomanSystem;
+  syllables: SyllableExplanation[];
+  notes: string[];              // word-level notes (tone sandhi, ...)
 }
 
 export interface SyllableResult {

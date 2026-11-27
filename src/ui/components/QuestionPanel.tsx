@@ -10,6 +10,7 @@ import { HintBar } from './HintBar';
 import { SyllableFeedback } from './SyllableFeedback';
 import { ToneColored } from './ToneColored';
 import { TtsButton } from './TtsButton';
+import { ReasonToggle } from './ReasonBox';
 import { useKeyboardAlign } from '../hooks/useKeyboardAlign';
 
 export interface PanelResult {
@@ -99,6 +100,7 @@ export function QuestionPanel({ q, mode, reveal, showFeedback, requireCorrect, s
         </div>
       )}
       {ctx && <p className="context">「{ctx}」</p>}
+      {reveal && <ReasonToggle item={q.item} system={q.system} />}
       <AnswerInput
         value={value}
         onChange={(v) => {
@@ -128,6 +130,7 @@ export function QuestionPanel({ q, mode, reveal, showFeedback, requireCorrect, s
       )}
       {feedback && <SyllableFeedback result={feedback} system={q.system} />}
       {feedback && requireCorrect && !feedback.correct && <p className="muted center">再試一次（照上面答案打）</p>}
+      {!reveal && feedback && (done || !feedback.correct) && <ReasonToggle item={q.item} system={q.system} />}
       {done && (
         <div className="center">
           {!colored && (

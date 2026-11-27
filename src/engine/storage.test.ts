@@ -80,6 +80,7 @@ describe('storage with working localStorage', () => {
       ttsOn: true,
       testInstantFeedback: false,
       theme: 'auto',
+      showReason: false,
     });
     expect(loadSettings()).toEqual(DEFAULT_SETTINGS);
     expect(loadSrs()).toEqual({});

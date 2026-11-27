@@ -58,6 +58,9 @@ export function Settings() {
             onChange={(testInstantFeedback) => updateSettings({ testInstantFeedback })}
           />
         </Row>
+        <Row label="答案解說" note="答題後自動展開「為甚麼？」解說框（聲母、韻母、聲調、拼寫規則）">
+          <Toggle label="答案解說" checked={settings.showReason} onChange={(showReason) => updateSettings({ showReason })} />
+        </Row>
         <Row label="外觀">
           <Seg<S['theme']>
             label="外觀"

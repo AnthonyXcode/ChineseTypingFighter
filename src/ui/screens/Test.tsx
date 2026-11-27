@@ -5,6 +5,7 @@ import { AccuracyChart } from '../components/AccuracyChart';
 import { PauseOverlay, ScreenHeader, Seg } from '../components/Common';
 import { HanziCard } from '../components/HanziCard';
 import { QuestionPanel, type PanelResult } from '../components/QuestionPanel';
+import { ReasonToggle } from '../components/ReasonBox';
 import { ToneColored } from '../components/ToneColored';
 import { useApp } from '../store';
 import { LEVEL_NAME, SYSTEM_NAME, chapterName, chaptersPresent, fmtDate, fmtSec } from '../util';
@@ -347,6 +348,7 @@ function Result({
                     <span className="muted small">答案：</span>
                     <ToneColored text={q.answer} system={q.system} /> <code className="small muted">{q.answer}</code>
                   </div>
+                  <ReasonToggle item={q.item} system={q.system} persist={false} compact />
                 </div>
               </li>
             ))}

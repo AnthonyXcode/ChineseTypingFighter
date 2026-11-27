@@ -14,6 +14,7 @@ import { ToneColored } from '../components/ToneColored';
 import { TtsButton } from '../components/TtsButton';
 import { useApp } from '../store';
 import { useKeyboardAlign } from '../hooks/useKeyboardAlign';
+import { ReasonToggle } from '../components/ReasonBox';
 import { ENEMY_NAME, HEARTS, LEVEL_NAME, ROMAN_NAME, SYSTEM_NAME, chapterName } from '../util';
 
 type Stage = number | 'endless';
@@ -344,7 +345,7 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
           G.enemyAnim = 'idle';
           nextQuestion(G);
           rerender();
-        }, settings.hintsEnabled ? 1900 : 1400);
+        }, settings.showReason ? 5000 : settings.hintsEnabled ? 1900 : 1400); // longer when the 解說 box is open
       }
     }
     rerender();
@@ -499,6 +500,7 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
             locked={G.locked}
             status={G.missed ? 'bad' : null}
           />
+          {G.missed && <ReasonToggle item={G.missed.q.item} system={G.missed.q.system} compact />}
           {hintsOn && !G.missed && (
             <div className="hint-row">
               <HintBar

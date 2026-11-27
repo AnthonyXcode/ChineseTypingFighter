@@ -21,6 +21,7 @@ export const DEFAULT_SETTINGS: Settings = {
   ttsOn: true,
   testInstantFeedback: false,
   theme: 'auto',
+  showReason: false,
 };
 
 export interface Progress {
