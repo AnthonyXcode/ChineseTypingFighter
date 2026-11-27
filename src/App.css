@@ -1519,7 +1519,7 @@ kbd {
 }
 .floater.miss {
   left: 14%;
-  color: var(--ink);
+  color: var(--seal);
 }
 @keyframes float-up {
   from {

@@ -36,13 +36,10 @@ export function Overlay({ children, label, onEscape }: { children: ReactNode; la
         onEscape();
       }
     };
-    // Register on the next task: the Esc keydown that opened this overlay is still bubbling to
-    // window when React commits it, and would otherwise close it again immediately.
-    const id = window.setTimeout(() => window.addEventListener('keydown', h), 0);
-    return () => {
-      window.clearTimeout(id);
-      window.removeEventListener('keydown', h);
-    };
+    // NB: the Esc keydown that opens a pause overlay is still dispatching when React commits it;
+    // AnswerInput stops its propagation so it can't reach this listener and close it again.
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
   }, [onEscape]);
   return (
     <div ref={boxRef} className="overlay" role="dialog" aria-modal="true" aria-label={label}>

@@ -48,6 +48,8 @@ export function AnswerInput({ value, onChange, onSubmit, system, onHint, onEscap
               onHint();
             } else if (e.key === 'Escape' && onEscape) {
               e.preventDefault();
+              // keep this keydown from reaching the pause overlay's window listener once it mounts
+              e.stopPropagation();
               onEscape();
             }
           }}

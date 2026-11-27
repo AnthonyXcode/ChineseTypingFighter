@@ -191,6 +191,8 @@ function Result({
   const { settings, srs, setSrs } = useApp();
   const [added, setAdded] = useState(false);
   const wrong = rows.filter((r) => !r.res.r.correct);
+  // PLAN §4: using the level-3 hint (full answer) also marks the item for review.
+  const reviewIds = Array.from(new Set([...record.wrongIds, ...rows.filter((r) => r.res.hintLevel >= 3).map((r) => r.q.item.id)]));
   const tones = Array.from(
     new Set([
       ...Object.keys(analysis.toneConfusion),
@@ -308,7 +310,7 @@ function Result({
         )}
       </section>
 
-      {wrong.length > 0 && (
+      {reviewIds.length > 0 && (
         <section className="panel paper">
           <div className="section-head">
             <h2 className="section-title">錯題（{wrong.length}）</h2>
@@ -318,12 +320,12 @@ function Result({
               disabled={added}
               onClick={() => {
                 let s = srs;
-                for (const id of record.wrongIds) s = reviewCard(s, id, false);
+                for (const id of reviewIds) s = reviewCard(s, id, false);
                 setSrs(s);
                 setAdded(true);
               }}
             >
-              {added ? '✓ 已加入複習' : '加入複習'}
+              {added ? '✓ 已加入複習' : `加入複習（${reviewIds.length}）`}
             </button>
           </div>
           <ul className="wrong-list">

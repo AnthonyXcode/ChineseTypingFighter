@@ -15,6 +15,7 @@ export interface Item {
   textTrad: string;
   syllables: Syl[];
   level: number;
+  freq: number;
   chapter: number;
 }
 
@@ -126,4 +127,30 @@ export async function back(page: Page) {
 export async function noHorizontalScroll(page: Page, where: string) {
   const [sw, iw] = await page.evaluate(() => [document.scrollingElement!.scrollWidth, window.innerWidth]);
   expect(sw, `horizontal scroll on ${where}`).toBeLessThanOrEqual(iw);
+}
+
+const CN = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二', '十三'];
+
+/**
+ * Open the 初級 learn lesson containing the given level-1 char and type correct study answers
+ * until that char is the current card (replicates engine lessonItems ordering).
+ */
+export async function learnUntil(page: Page, text: string, sys: Sys) {
+  const target = lookup(text);
+  const list = ITEMS.filter((i) => i.chapter === target.chapter && i.kind === 'char' && i.level === 1).sort(
+    (a, b) => a.level - b.level || b.freq - a.freq || (a.id < b.id ? -1 : 1),
+  );
+  const pos = list.findIndex((i) => i.id === target.id);
+  if (pos < 0) throw new Error(`${text} is not a 初級 lesson item`);
+  await page.getByRole('button', { name: /學習模式/ }).click();
+  await page.getByRole('button', { name: new RegExp(`第${CN[target.chapter]}章`) }).click();
+  await page.getByRole('button', { name: `第 ${Math.floor(pos / 20) + 1} 課` }).click();
+  for (let k = 0; k < pos % 20; k++) {
+    const cur = await currentPrompt(page);
+    const box = await answerInput(page);
+    await box.fill(answerOf(cur.text, sys));
+    await box.press('Enter');
+    await page.getByRole('button', { name: /下一題/ }).click();
+  }
+  await expect(page.locator('.qpanel .counter')).toHaveText(new RegExp(`^${(pos % 20) + 1} /`));
 }
