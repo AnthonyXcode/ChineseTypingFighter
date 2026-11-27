@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { Question, TestAnalysis, TestRecord } from '../../types/engine';
-import { addTest, analyzeTest, buildQuestions, loadTests, reviewCard } from '../../engine';
+import { addRecent, addTest, analyzeTest, buildQuestions, loadRecent, loadTests, reviewCard } from '../../engine';
 import { AccuracyChart } from '../components/AccuracyChart';
 import { PauseOverlay, ScreenHeader, Seg } from '../components/Common';
 import { HanziCard } from '../components/HanziCard';
@@ -29,11 +29,13 @@ export function Test() {
       system: settings.system,
       count,
       chapters: allBook || chapters.length === 0 ? undefined : chapters,
+      recentIds: loadRecent(),
     });
     setPhase({ k: 'run', questions });
   }
 
   function finish(rows: Row[]) {
+    addRecent(rows.map((r) => r.q.item.id));
     const analysis = analyzeTest(rows.map(({ q, res }) => ({ q, r: res.r })));
     const correct = rows.filter((r) => r.res.r.correct).length;
     const wrongIds = Array.from(new Set(rows.filter((r) => !r.res.r.correct).map((r) => r.q.item.id)));

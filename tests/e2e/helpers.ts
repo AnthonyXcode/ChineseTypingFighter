@@ -145,12 +145,14 @@ export async function learnUntil(page: Page, text: string, sys: Sys) {
   await page.getByRole('button', { name: /學習模式/ }).click();
   await page.getByRole('button', { name: new RegExp(`第${CN[target.chapter]}章`) }).click();
   await page.getByRole('button', { name: `第 ${Math.floor(pos / 20) + 1} 課` }).click();
-  for (let k = 0; k < pos % 20; k++) {
+  // study cards are shuffled each time, so step through the lesson until the target card is shown
+  for (let k = 0; k < 20; k++) {
     const cur = await currentPrompt(page);
+    if (cur.text === target.text || cur.text === target.textTrad) return;
     const box = await answerInput(page);
     await box.fill(answerOf(cur.text, sys));
     await box.press('Enter');
     await page.getByRole('button', { name: /下一題/ }).click();
   }
-  await expect(page.locator('.qpanel .counter')).toHaveText(new RegExp(`^${(pos % 20) + 1} /`));
+  throw new Error(`${text} not found in its lesson`);
 }

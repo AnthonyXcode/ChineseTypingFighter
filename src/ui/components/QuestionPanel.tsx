@@ -10,6 +10,7 @@ import { HintBar } from './HintBar';
 import { SyllableFeedback } from './SyllableFeedback';
 import { ToneColored } from './ToneColored';
 import { TtsButton } from './TtsButton';
+import { useKeyboardAlign } from '../hooks/useKeyboardAlign';
 
 export interface PanelResult {
   raw: string;
@@ -44,6 +45,8 @@ export function QuestionPanel({ q, mode, reveal, showFeedback, requireCorrect, s
   const [first, setFirst] = useState<PanelResult | null>(null);
   const [ttsUsed, setTtsUsed] = useState(false);
   const start = useRef(performance.now());
+  const panelRef = useRef<HTMLDivElement>(null);
+  useKeyboardAlign(panelRef);
 
   const learn = mode === 'learn';
   const hintsOn = settings.hintsEnabled;
@@ -77,7 +80,7 @@ export function QuestionPanel({ q, mode, reveal, showFeedback, requireCorrect, s
   }
 
   return (
-    <div className="qpanel">
+    <div className="qpanel" ref={panelRef}>
       <div className="qpanel-meta">
         {counter && <span className="counter">{counter}</span>}
         <span className={`sys-tag sys-${q.system}`}>{ROMAN_NAME[q.system]}</span>

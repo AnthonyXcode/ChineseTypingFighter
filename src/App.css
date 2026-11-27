@@ -1626,3 +1626,16 @@ kbd {
     display: none;
   }
 }
+
+/* ---- mobile on-screen keyboard (see src/ui/hooks/useKeyboardAlign.ts) ---- */
+html.kb-open body {
+  /* scroll room so the card's bottom edge can be brought right above the keyboard */
+  padding-bottom: var(--kb, 0px);
+}
+@media (max-width: 520px) {
+  html.kb-open .arena {
+    /* compact the arena so word bubble + fighters + answer box fit above the keyboard */
+    height: 210px;
+    margin-bottom: 8px;
+  }
+}

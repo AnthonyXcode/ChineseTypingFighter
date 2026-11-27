@@ -9,6 +9,7 @@ const KEYS = {
   tests: STORAGE_PREFIX + 'tests',
   leaderboard: STORAGE_PREFIX + 'leaderboard',
   progress: STORAGE_PREFIX + 'progress',
+  recent: STORAGE_PREFIX + 'recent',
 };
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -99,4 +100,17 @@ export function loadProgress(): Progress {
 }
 export function saveProgress(p: Progress): void {
   write(KEYS.progress, p);
+}
+
+/** Recently practised item ids (newest last), used to avoid repeating the same questions across rounds. */
+const MAX_RECENT = 300;
+export function loadRecent(): string[] {
+  const r = read<unknown>(KEYS.recent);
+  return Array.isArray(r) ? r.filter((x): x is string => typeof x === 'string') : [];
+}
+export function addRecent(ids: string[]): string[] {
+  const set = new Set(ids);
+  const next = [...loadRecent().filter((id) => !set.has(id)), ...set].slice(-MAX_RECENT);
+  write(KEYS.recent, next);
+  return next;
 }

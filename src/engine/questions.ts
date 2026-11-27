@@ -61,9 +61,14 @@ export function loadData(): Promise<Item[]> {
 // ---------- level classification ----------
 
 /** Level an item belongs to by kind/length (PLAN §3); falls back to item.level. */
+/** Rare single chars (data level 2/3) are not practised on their own: 初級 uses only the top-frequency chars. */
+function inPool(item: Item): boolean {
+  return item.kind !== 'char' || item.level === 1;
+}
+
 export function itemLevel(item: Item): Level {
   const n = item.syllables.length;
-  if (item.kind === 'char') return item.level; // only top-frequency chars are level 1
+  if (item.kind === 'char') return 1; // single chars are a 初級 format (see inPool for rare ones)
   if (item.kind === 'word' && n === 2) return 2;
   if (item.kind === 'word' && (n === 3 || n === 4)) return 3;
   if (item.kind === 'phrase' && n <= 8) return 3;
@@ -77,8 +82,9 @@ function neighbourOrder(level: Level): Level[] {
 }
 
 function weightFor(item: Item, level: Level): number {
-  if (level === 1) return 1 + Math.log1p(Math.max(0, item.freq)); // prefer frequent chars
-  if (level === 3) return 1 + item.syllables.filter((s) => s.polyphonic).length; // weight polyphonic
+  // Level 1 is already restricted to the top-frequency chars, so order is uniform: weighting by
+  // frequency made 的/了/我… open nearly every round and the sequence felt repetitive.
+  if (level === 3) return 1 + 0.5 * item.syllables.filter((s) => s.polyphonic).length; // mild polyphone bias
   return 1;
 }
 
@@ -114,10 +120,11 @@ export function buildQuestions(items: Item[], opts: QuestionOptions): Question[]
   const rng = opts.rng ?? Math.random;
   const systems: RomanSystem[] = opts.system === 'both' ? ['pinyin', 'jyutping'] : [opts.system];
   const exclude = new Set(opts.excludeIds ?? []);
+  const recent = new Set(opts.recentIds ?? []);
   const chapters = opts.chapters ? new Set(opts.chapters) : null;
   const seen = new Set<string>();
   const pool = items.filter((it) => {
-    if (seen.has(it.id) || exclude.has(it.id)) return false;
+    if (seen.has(it.id) || exclude.has(it.id) || !inPool(it)) return false;
     if (chapters && !chapters.has(it.chapter)) return false;
     if (!systems.every((s) => hasReading(it, s))) return false;
     seen.add(it.id);
@@ -133,7 +140,9 @@ export function buildQuestions(items: Item[], opts: QuestionOptions): Question[]
     const dueTier = tier
       .filter((it) => dueRank.has(it.id))
       .sort((a, b) => (dueRank.get(a.id) as number) - (dueRank.get(b.id) as number));
-    const rest = weightedShuffle(tier.filter((it) => !dueRank.has(it.id)), lvl, rng);
+    const fresh = weightedShuffle(tier.filter((it) => !dueRank.has(it.id) && !recent.has(it.id)), lvl, rng);
+    const stale = weightedShuffle(tier.filter((it) => !dueRank.has(it.id) && recent.has(it.id)), lvl, rng);
+    const rest = [...fresh, ...stale];
     for (const it of [...dueTier, ...rest]) {
       if (chosen.length >= opts.count) break;
       chosen.push(it);
@@ -151,7 +160,7 @@ export function buildQuestions(items: Item[], opts: QuestionOptions): Question[]
 /** Chapter items sorted by level asc, freq desc; slice for lesson `lessonIndex` (0-based). */
 export function lessonItems(items: Item[], chapter: number, lessonIndex: number, size = 20, level?: Level): Item[] {
   return items
-    .filter((it) => it.chapter === chapter && (level === undefined || itemLevel(it) === level))
+    .filter((it) => it.chapter === chapter && (level === undefined || (inPool(it) && itemLevel(it) === level)))
     .sort((a, b) => a.level - b.level || b.freq - a.freq || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
     .slice(lessonIndex * size, lessonIndex * size + size);
 }

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { CheckResult, HintLevel, LeaderboardEntry, Question } from '../../types/engine';
 import type { Level } from '../../types/data';
-import { LEVEL_MULTIPLIER, addLeaderboard, buildQuestions, checkAnswer, getHint, loadLeaderboard, scoreAnswer } from '../../engine';
+import { LEVEL_MULTIPLIER, addLeaderboard, addRecent, buildQuestions, checkAnswer, getHint, loadLeaderboard, loadRecent, scoreAnswer } from '../../engine';
 import { sfx } from '../audio/sfx';
 import { AnswerInput } from '../components/AnswerInput';
 import { PauseOverlay, Overlay, ScreenHeader } from '../components/Common';
@@ -13,6 +13,7 @@ import { SyllableFeedback } from '../components/SyllableFeedback';
 import { ToneColored } from '../components/ToneColored';
 import { TtsButton } from '../components/TtsButton';
 import { useApp } from '../store';
+import { useKeyboardAlign } from '../hooks/useKeyboardAlign';
 import { ENEMY_NAME, HEARTS, LEVEL_NAME, ROMAN_NAME, SYSTEM_NAME, chapterName } from '../util';
 
 type Stage = number | 'endless';
@@ -161,7 +162,13 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
   const buildPool = useCallback(
     (boss: boolean): Question[] => {
       const chapters = stage === 'endless' ? undefined : [stage];
-      const opts = { mode: 'challenge' as const, level: boss ? (3 as Level) : level, system: settings.system, count: boss ? 12 : 30 };
+      const opts = {
+        mode: 'challenge' as const,
+        level: boss ? (3 as Level) : level,
+        system: settings.system,
+        count: boss ? 12 : 30,
+        recentIds: loadRecent(), // words from recent rounds come last, so each round feels fresh
+      };
       let qs = buildQuestions(items, { ...opts, chapters });
       if (!qs.length) qs = buildQuestions(items, opts);
       return qs;
@@ -170,6 +177,9 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
   );
 
   const g = useRef<Game | null>(null);
+  // mobile: keep the arena + answer box right above the on-screen keyboard
+  const inputAreaRef = useRef<HTMLDivElement>(null);
+  useKeyboardAlign(inputAreaRef);
 
   const speedFactor = (kills: number) => (stage === 'endless' ? Math.max(0.4, Math.pow(0.95, Math.floor(kills / 5))) : 1);
 
@@ -254,6 +264,7 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
     const G = g.current;
     if (!G || G.locked || G.status !== 'fight' || G.pauseAt !== null) return;
     const elapsed = performance.now() - G.qStart;
+    addRecent([G.q.item.id]);
     const r = timedOut ? null : checkAnswer(raw, G.q, level);
     const correct = !!r?.correct;
     const hintPenalty = Math.max(G.hintLevel > 0 ? getHint(G.q, G.hintLevel).penalty : 0, G.ttsUsed ? 0.1 : 0);
@@ -469,7 +480,7 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
       </div>
 
       {G.status === 'fight' && (
-        <div className="challenge-input">
+        <div className="challenge-input" ref={inputAreaRef}>
           <AnswerInput
             value={value}
             onChange={setValue}

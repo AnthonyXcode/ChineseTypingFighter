@@ -134,7 +134,7 @@ export function Learn({ review = false }: { review?: boolean }) {
       {phase.k === 'study' && (
         <Runner
           key={`study-${phase.ch}-${phase.lesson}`}
-          questions={questionsFor(phase.items, settings.system)}
+          questions={questionsFor(shuffle(phase.items), settings.system)}
           study
           onEscape={() => setPaused(true)}
           onFinish={() => setPhase({ k: 'quiz', ch: phase.ch, lesson: phase.lesson, items: phase.items })}

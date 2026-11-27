@@ -60,6 +60,7 @@ export interface QuestionOptions {
   chapters?: number[];          // restrict to chapters; undefined = all
   srs?: SrsState;               // if given, due items are prioritised
   excludeIds?: string[];
+  recentIds?: string[];         // recently practised items: still eligible, but drawn after everything else
   rng?: () => number;           // injectable for tests
 }
 

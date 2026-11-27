@@ -2,8 +2,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   DEFAULT_SETTINGS,
   addLeaderboard,
+  addRecent,
   addTest,
   loadLeaderboard,
+  loadRecent,
   loadProgress,
   loadSettings,
   loadSrs,
@@ -122,6 +124,16 @@ describe('storage with working localStorage', () => {
     expect(t).toHaveLength(50);
     expect(t[0].date).toBe(5);
     expect(t[49].date).toBe(54);
+  });
+
+  it('recent ids: dedupe, newest last, capped at 300', () => {
+    expect(loadRecent()).toEqual([]);
+    addRecent(['a', 'b']);
+    expect(addRecent(['a', 'c'])).toEqual(['b', 'a', 'c']);
+    addRecent(Array.from({ length: 400 }, (_, i) => `x${i}`));
+    const r = loadRecent();
+    expect(r).toHaveLength(300);
+    expect(r[r.length - 1]).toBe('x399');
   });
 
   it('leaderboard keeps top 10 sorted', () => {

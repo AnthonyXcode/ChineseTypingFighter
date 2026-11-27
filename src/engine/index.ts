@@ -34,6 +34,8 @@ export {
   addLeaderboard,
   loadProgress,
   saveProgress,
+  loadRecent,
+  addRecent,
 } from './storage';
 export type { Progress } from './storage';
 export {

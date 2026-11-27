@@ -208,3 +208,36 @@ describe('loadData', () => {
     vi.unstubAllEnvs();
   });
 });
+
+describe('variety between rounds', () => {
+  const chars = Array.from({ length: 40 }, (_, i) =>
+    ({ ...mkItem(String.fromCharCode(0x4e00 + i), 'yi1', 'jat1'), id: `c-${i}`, kind: 'char' as const, level: 1 as const, freq: 1000 - i * 20, chapter: 1 }),
+  );
+
+  it('level 1 order is not dominated by the most frequent chars', () => {
+    const firsts = new Set<string>();
+    for (let seed = 1; seed <= 30; seed++) {
+      firsts.add(buildQuestions(chars, opts({ count: 5, rng: seeded(seed) }))[0].item.id);
+    }
+    expect(firsts.size).toBeGreaterThan(12);
+  });
+
+  it('recentIds are drawn only after every other item', () => {
+    const recentIds = chars.slice(0, 30).map((c) => c.id);
+    const qs = buildQuestions(chars, opts({ count: 15, recentIds, rng: seeded(7) }));
+    const ids = qs.map((q) => q.item.id);
+    expect(ids.slice(0, 10).every((id) => !recentIds.includes(id))).toBe(true);
+    expect(ids.slice(10).every((id) => recentIds.includes(id))).toBe(true);
+  });
+});
+
+describe('rare single chars', () => {
+  it('are never used as questions on their own (高級 stays multi-char)', () => {
+    const rare = { ...mkItem('罡', 'gang1', 'gong1'), id: 'c-rare', kind: 'char' as const, level: 3 as const, freq: 1, chapter: 1 };
+    const phrase = { ...mkItem('一言不发', 'yi1 yan2 bu4 fa1', 'jat1 jin4 bat1 faat3'), id: 'w-1', kind: 'word' as const, level: 3 as const, freq: 2, chapter: 1 };
+    for (let seed = 1; seed <= 10; seed++) {
+      const qs = buildQuestions([rare, phrase], opts({ level: 3, count: 2, rng: seeded(seed) }));
+      expect(qs.map((q) => q.item.id)).toEqual(['w-1']);
+    }
+  });
+});
