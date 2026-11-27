@@ -46,7 +46,7 @@ test('test mode: 10 questions → grade, accuracy, analysis, hints counted, 加�
   const stats = page.locator('.result-head .stats');
   await expect(stats).toContainText('60%');
   await expect(stats).toContainText('6 / 10');
-  await expect(stats).toContainText('3 次'); // hint levels used
+  await expect(stats).toContainText('1 題'); // questions that used any hint (3 levels on one question)
   await expect(page.getByRole('heading', { name: '錯誤分析' })).toBeVisible();
   await expect(page.getByRole('heading', { name: '聲母混淆' })).toBeVisible();
   await expect(page.locator('.bar-list li').first()).toBeVisible();
@@ -56,7 +56,7 @@ test('test mode: 10 questions → grade, accuracy, analysis, hints counted, 加�
   // test history stored
   const tests = await page.evaluate(() => JSON.parse(localStorage.getItem('ctf:tests') ?? '[]'));
   expect(tests).toHaveLength(1);
-  expect(tests[0]).toMatchObject({ total: 10, correct: 6, grade: 'C', hintsUsed: 3 });
+  expect(tests[0]).toMatchObject({ total: 10, correct: 6, grade: 'C', hintsUsed: 1 });
 
   // 加入複習: 4 wrong + the item answered with the full-answer hint
   const addBtn = page.getByRole('button', { name: /加入複習/ });

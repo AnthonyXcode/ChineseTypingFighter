@@ -21,7 +21,7 @@ const PY_FINALS: [string, string, string][] = [
   ['ia', '家', 'jia1'], ['ie', '獵', 'lie4'], ['iao', '笑', 'xiao4'], ['iu', '酒', 'jiu3'], ['ian', '天', 'tian1'],
   ['in', '心', 'xin1'], ['iang', '娘', 'niang2'], ['ing', '英', 'ying1'], ['iong', '雄', 'xiong2'],
   ['ua', '花', 'hua1'], ['uo', '我', 'wo3'], ['uai', '快', 'kuai4'], ['ui', '回', 'hui2'], ['uan', '關', 'guan1'],
-  ['un', '問', 'wen4'], ['uang', '恍', 'huang3'], ['üe (ve)', '綠', 'lv4'], ['er', '二', 'er4'],
+  ['un', '春', 'chun1'], ['uang', '恍', 'huang3'], ['üe (ve)', '綠', 'lv4'], ['er', '二', 'er4'],
 ];
 const PY_TONES: [string, string, string, string][] = [
   ['1', '陰平 ˉ 高平', '天', 'tian1'],

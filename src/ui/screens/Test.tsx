@@ -44,7 +44,7 @@ export function Test() {
       total: rows.length,
       correct,
       avgMs: rows.length ? rows.reduce((a, r) => a + r.res.ms, 0) / rows.length : 0,
-      hintsUsed: rows.reduce((a, r) => a + r.res.hintLevel, 0),
+      hintsUsed: rows.filter((r) => r.res.hintLevel > 0).length, // questions where any hint was used
       grade: analysis.grade,
       wrongIds,
     };
@@ -193,6 +193,10 @@ function Result({
   const wrong = rows.filter((r) => !r.res.r.correct);
   // PLAN §4: using the level-3 hint (full answer) also marks the item for review.
   const reviewIds = Array.from(new Set([...record.wrongIds, ...rows.filter((r) => r.res.hintLevel >= 3).map((r) => r.q.item.id)]));
+  // rows: only expected tones that were actually confused; columns: every tone involved
+  const rowTones = Object.keys(analysis.toneConfusion)
+    .filter((t) => Object.values(analysis.toneConfusion[t] ?? {}).some((n) => n > 0))
+    .sort();
   const tones = Array.from(
     new Set([
       ...Object.keys(analysis.toneConfusion),
@@ -224,8 +228,8 @@ function Result({
             <dd>{fmtSec(record.avgMs)}</dd>
           </div>
           <div>
-            <dt>使用提示</dt>
-            <dd>{record.hintsUsed} 次</dd>
+            <dt>使用提示題數</dt>
+            <dd>{record.hintsUsed} 題</dd>
           </div>
         </dl>
       </section>
@@ -286,7 +290,7 @@ function Result({
                       </tr>
                     </thead>
                     <tbody>
-                      {tones.map((e) => (
+                      {rowTones.map((e) => (
                         <tr key={e}>
                           <th scope="row">{e}</th>
                           {tones.map((g) => {

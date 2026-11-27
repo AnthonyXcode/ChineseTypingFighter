@@ -64,3 +64,16 @@ The tests avoid fixed waits. To answer a question, a test reads the prompt from 
 
 - Screenshots were reviewed at 375 px and 1280 px, in light and dark, for home, settings, charts, learn study/wrong-answer/pause, test result, challenge select/arena/miss/game over. No overlapping UI blocks, no horizontal scroll, and contrast in dark mode is acceptable. The grade stamp "D" and history grade are low-emphasis grey by design.
 - Keyboard: Enter submits. After feedback, focus moves to 下一題, so Enter advances. Tab steps through hint levels without moving focus, and with hints off Tab moves focus normally. Esc now pauses and resumes (fix 1), and focus returns to the input (fix 2). The game-over name box and the result-screen primary buttons get focus automatically.
+
+## Follow-up fixes (remaining issues resolved)
+
+| Issue | Fix |
+|---|---|
+| Esc only paused with input focused | Window-level Esc handler in `src/ui/components/AnswerInput.tsx` (skipped while a dialog is open); e2e covers Esc with focus elsewhere |
+| Silent Enter lock after hit/miss | `locked` prop on `AnswerInput`: input read-only, dimmed, `aria-busy`, placeholder/button read 出招中…; e2e asserts it |
+| Level-1 hint `_` for zero-initial syllables | `src/engine/hints.ts` reveals first letter of the final (`ai4` → `a_`, `m4` → `m_`); unit tests updated |
+| 使用提示 counted hint levels | Now counts questions that used any hint (使用提示題數 N 題); empty tone-matrix rows removed |
+| 拼音表 `un` example 問 wèn | Changed to 春 chūn |
+| 失手！ overlapping word bubble at 375px | Floater starts lower on narrow screens and stacks behind the bubble |
+
+Not changed (intentional): score 0 at game over skips name entry; dev-server file-watch issue is environment-only.

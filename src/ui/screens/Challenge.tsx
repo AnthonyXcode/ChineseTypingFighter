@@ -485,6 +485,7 @@ function Arena({ stage, onExit, onRetry, onNext }: { stage: Stage; onExit: () =>
             }
             onEscape={pause}
             disabled={paused}
+            locked={G.locked}
             status={G.missed ? 'bad' : null}
           />
           {hintsOn && !G.missed && (

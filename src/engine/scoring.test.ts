@@ -110,7 +110,7 @@ describe('getHint', () => {
   });
   it('zero initial and ü', () => {
     const q = mkQ(mkItem('安绿', 'an1 lv4', 'on1 luk6'));
-    expect(getHint(q, 1).text).toBe('_ l_');
+    expect(getHint(q, 1).text).toBe('a_ l_');
     expect(getHint(q, 2).text).toBe('an lü');
     expect(getHint(q, 3).text).toBe('ān lǜ');
   });
@@ -120,7 +120,7 @@ describe('getHint', () => {
     expect(getHint(q, 2).text).toBe('gwong dung waa');
     expect(getHint(q, 3).text).toBe('gwong2 dung1 waa2');
     const m = mkQ(mkItem('唔', 'wu2', 'm4'), 'jyutping');
-    expect(getHint(m, 1).text).toBe('_');
+    expect(getHint(m, 1).text).toBe('m_');
   });
 });
 

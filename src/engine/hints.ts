@@ -9,7 +9,13 @@ export function getHint(q: Question, level: HintLevel): Hint {
   const syls = q.answer.trim().split(/\s+/).filter(Boolean);
   let text = '';
   if (level === 1) {
-    text = syls.map((s) => splitSyllable(s, q.system).initial + '_').join(' ');
+    text = syls
+      .map((s) => {
+        const { initial, final } = splitSyllable(s, q.system);
+        // zero-initial syllables (ai4, ngo5 has an initial; aa3 doesn't) reveal the first letter of the final
+        return (initial || final.charAt(0)) + '_';
+      })
+      .join(' ');
   } else if (level === 2) {
     text = syls
       .map((s) => {

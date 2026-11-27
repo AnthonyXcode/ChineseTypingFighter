@@ -52,7 +52,19 @@ test('challenge stage 1 初級: hits, combo, miss, timeout, pause, game over →
   await expect(hearts(page)).toHaveAttribute('aria-label', '生命 4 / 5');
   await expect(page.locator('.word-bubble .missed')).toContainText('正解');
   await expect(page.locator('.hud .combo')).not.toContainText('連擊');
+  // input shows a visible locked state while the miss animation plays
+  await expect(await answerInput(page)).toHaveAttribute('aria-busy', 'true');
+  await expect(page.getByRole('button', { name: '出招中…' })).toBeDisabled();
   await ready(page);
+  await expect(await answerInput(page)).not.toHaveAttribute('aria-busy', 'true');
+
+  // Esc pauses even when focus is not in the answer box
+  await page.locator('.arena').click({ position: { x: 5, y: 5 } });
+  await expect(await answerInput(page)).not.toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: '暫停' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: '暫停' })).toHaveCount(0);
 
   // Esc pauses; the countdown does not run while paused
   await (await answerInput(page)).press('Escape');
